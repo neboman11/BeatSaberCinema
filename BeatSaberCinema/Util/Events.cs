@@ -66,7 +66,7 @@ namespace BeatSaberCinema
 			LevelSelected?.InvokeSafe(new LevelSelectedArgs(null, beatmapData, originalPath), nameof(LevelSelected));
 		}
 
-		internal static void SetExtraSongData(SongCore.Data.ExtraSongData? songData, SongCore.Data.ExtraSongData.DifficultyData? selectedDifficultyData)
+		internal static void SetExtraSongData(SongCore.Data.SongData? songData, SongCore.Data.SongData.DifficultyData? selectedDifficultyData)
 		{
 			DifficultySelected?.InvokeSafe(new ExtraSongDataArgs(songData, selectedDifficultyData), nameof(DifficultySelected));
 		}

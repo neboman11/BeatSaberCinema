@@ -18,10 +18,10 @@ namespace BeatSaberCinema
 
 	public class ExtraSongDataArgs
 	{
-		public readonly SongCore.Data.ExtraSongData? SongData;
-		public readonly SongCore.Data.ExtraSongData.DifficultyData? SelectedDifficultyData;
+		public readonly SongCore.Data.SongData? SongData;
+		public readonly SongCore.Data.SongData.DifficultyData? SelectedDifficultyData;
 
-		public ExtraSongDataArgs(SongCore.Data.ExtraSongData? songData, SongCore.Data.ExtraSongData.DifficultyData? selectedDifficultyData)
+		public ExtraSongDataArgs(SongCore.Data.SongData? songData, SongCore.Data.SongData.DifficultyData? selectedDifficultyData)
 		{
 			SongData = songData;
 			SelectedDifficultyData = selectedDifficultyData;
