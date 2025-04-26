@@ -76,8 +76,8 @@ namespace BeatSaberCinema
 
 		private BeatmapLevel? _currentLevel;
 		private bool _currentLevelIsPlaylistSong;
-		private ExtraSongData? _extraSongData;
-		private ExtraSongData.DifficultyData? _difficultyData;
+		private SongData? _extraSongData;
+		private SongData.DifficultyData? _difficultyData;
 		private VideoConfig? _currentVideo;
 		private bool _videoMenuActive;
 		private int _selectedCell;
@@ -212,8 +212,8 @@ namespace BeatSaberCinema
 			_deleteButton.interactable = state;
 			_deleteVideoButton.interactable = state;
 			_searchButton.gameObject.SetActive(_currentLevel != null &&
-			                                   !VideoLoader.IsDlcSong(_currentLevel) &&
-			                                   _downloadController.LibrariesAvailable());
+											   !VideoLoader.IsDlcSong(_currentLevel) &&
+											   _downloadController.LibrariesAvailable());
 			_previewButtonText.text = PlaybackController.Instance.IsPreviewPlaying ? "Stop preview" : "Preview";
 
 			if (_currentLevel != null && VideoLoader.IsDlcSong(_currentLevel) && _downloadController.LibrariesAvailable())

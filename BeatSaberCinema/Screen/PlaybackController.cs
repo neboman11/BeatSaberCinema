@@ -11,7 +11,7 @@ using UnityEngine.Video;
 
 namespace BeatSaberCinema
 {
-	public class PlaybackController: MonoBehaviour
+	public class PlaybackController : MonoBehaviour
 	{
 		public enum Scene { SoloGameplay, MultiplayerGameplay, Menu, Other }
 		private Scene _activeScene = Scene.Other;
@@ -141,7 +141,7 @@ namespace BeatSaberCinema
 
 			ResyncVideo();
 			VideoPlayer.Player.frameReady += PlayerStartedAfterResync;
-			Log.Debug("Applying offset: "+offset);
+			Log.Debug("Applying offset: " + offset);
 		}
 
 		private void PlayerStartedAfterResync(VideoPlayer player, long frame)
@@ -242,7 +242,7 @@ namespace BeatSaberCinema
 			if (frame % 120 == 0)
 			{
 				Log.Debug("Frame: " + frame + " - Player: " + Util.FormatFloat((float) playerTime) + " - AudioSource: " +
-				          Util.FormatFloat(audioSourceTime) + " - Error (ms): " + Math.Round(error * 1000));
+						  Util.FormatFloat(audioSourceTime) + " - Error (ms): " + Math.Round(error * 1000));
 			}
 
 			if (VideoConfig.endVideoAt.HasValue)
@@ -424,7 +424,7 @@ namespace BeatSaberCinema
 			else
 			{
 				VideoPlayer.VolumeScale = _settingsManager.settings.audio.volume;
-	            VideoPlayer.screenController.OnGameSceneLoadedFresh();
+				VideoPlayer.screenController.OnGameSceneLoadedFresh();
 			}
 		}
 
@@ -668,7 +668,7 @@ namespace BeatSaberCinema
 
 			if (VideoConfig == null || !VideoConfig.IsPlayable)
 			{
-				Log.Debug("No video configured or video is not playable: "+VideoConfig?.VideoPath);
+				Log.Debug("No video configured or video is not playable: " + VideoConfig?.VideoPath);
 
 				if (SettingsStore.Instance.CoverEnabled && (VideoConfig?.forceEnvironmentModifications == null || VideoConfig.forceEnvironmentModifications == false))
 				{
@@ -845,7 +845,7 @@ namespace BeatSaberCinema
 				if (BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData?.practiceSettings != null)
 				{
 					songSpeed = BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData.practiceSettings.songSpeedMul;
-					if ((totalOffset+startTime) < 0)
+					if ((totalOffset + startTime) < 0)
 					{
 						totalOffset /= (songSpeed * VideoConfig.PlaybackSpeed);
 					}
@@ -929,7 +929,7 @@ namespace BeatSaberCinema
 		//TODO Using a stopwatch will not work properly when seeking in the map (e.g. IntroSkip, PracticePlugin)
 		private IEnumerator PlayVideoDelayedCoroutine(float delayStartTime)
 		{
-			Log.Debug("Waiting for "+delayStartTime+" seconds before playing video");
+			Log.Debug("Waiting for " + delayStartTime + " seconds before playing video");
 			_playbackDelayStopwatch ??= new Stopwatch();
 			_playbackDelayStopwatch.Start();
 			VideoPlayer.Pause();
@@ -937,7 +937,7 @@ namespace BeatSaberCinema
 			VideoPlayer.Player.time = 0;
 			var ticksUntilStart = (delayStartTime) * TimeSpan.TicksPerSecond;
 			yield return new WaitUntil(() => _playbackDelayStopwatch.ElapsedTicks >= ticksUntilStart);
-			Log.Debug("Elapsed ms: "+_playbackDelayStopwatch.ElapsedMilliseconds);
+			Log.Debug("Elapsed ms: " + _playbackDelayStopwatch.ElapsedMilliseconds);
 			_playbackDelayStopwatch.Stop();
 			_playbackDelayStopwatch.Reset();
 
@@ -1002,7 +1002,7 @@ namespace BeatSaberCinema
 				timeout.Stop();
 				if (timeout.HasTimedOut && Util.IsFileLocked(videoFileInfo))
 				{
-					Log.Warn("Video file locked: "+videoPath);
+					Log.Warn("Video file locked: " + videoPath);
 				}
 			}
 
