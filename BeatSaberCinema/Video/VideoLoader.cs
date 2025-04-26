@@ -247,12 +247,13 @@ namespace BeatSaberCinema
 
 		private static void OnConfigChanged(object _, FileSystemEventArgs e)
 		{
-			UnityMainThreadTaskScheduler.Factory.StartNew(delegate { OnConfigChangedMainThread(e); });
+			UnityMainThreadTaskScheduler.Factory.StartNew(delegate
+			{ OnConfigChangedMainThread(e); });
 		}
 
 		private static void OnConfigChangedMainThread(FileSystemEventArgs e)
 		{
-			Log.Debug("Config "+e.ChangeType+" detected: "+e.FullPath);
+			Log.Debug("Config " + e.ChangeType + " detected: " + e.FullPath);
 			if (_ignoreNextEventForPath == e.FullPath && !Util.IsInEditor())
 			{
 				Log.Debug("Ignoring event after saving");
@@ -291,7 +292,7 @@ namespace BeatSaberCinema
 				return await LoadAudioClipAsync(level);
 			}
 
-			var beatmapLevelLoader = (BeatmapLevelLoader)BeatmapLevelsModel.levelLoader;
+			var beatmapLevelLoader = (BeatmapLevelLoader) BeatmapLevelsModel.levelLoader;
 			if (beatmapLevelLoader._loadedBeatmapLevelDataCache.TryGetFromCache(level.levelID, out var beatmapLevelData))
 			{
 				Log.Debug("Getting audio clip from async cache");
@@ -381,11 +382,6 @@ namespace BeatSaberCinema
 		[Obsolete("Obsolete")]
 		public static string GetLevelPath(BeatmapLevel level)
 		{
-			if (!level.hasPrecalculatedData)
-			{
-				return Collections.GetCustomLevelPath(level.levelID);
-			}
-
 			var songName = level.songName.Trim();
 			songName = Util.ReplaceIllegalFilesystemChars(songName);
 			return Path.Combine(Environment.CurrentDirectory, "Beat Saber_Data", "CustomLevels", OST_DIRECTORY_NAME, songName);
@@ -395,7 +391,7 @@ namespace BeatSaberCinema
 		{
 			if (videoConfig.LevelDir == null || videoConfig.ConfigPath == null || !Directory.Exists(videoConfig.LevelDir))
 			{
-				Log.Warn("Failed to save video. Path "+videoConfig.LevelDir+" does not exist.");
+				Log.Warn("Failed to save video. Path " + videoConfig.LevelDir + " does not exist.");
 				return;
 			}
 
@@ -445,7 +441,7 @@ namespace BeatSaberCinema
 			try
 			{
 				File.Delete(videoConfig.VideoPath);
-				Log.Info("Deleted video at "+videoConfig.VideoPath);
+				Log.Info("Deleted video at " + videoConfig.VideoPath);
 				if (videoConfig.DownloadState != DownloadState.Cancelled)
 				{
 					videoConfig.DownloadState = DownloadState.NotDownloaded;
@@ -455,7 +451,7 @@ namespace BeatSaberCinema
 			}
 			catch (Exception e)
 			{
-				Log.Error("Failed to delete video at "+videoConfig.VideoPath);
+				Log.Error("Failed to delete video at " + videoConfig.VideoPath);
 				Log.Error(e);
 			}
 		}
