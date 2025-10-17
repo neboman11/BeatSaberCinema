@@ -1,3 +1,7 @@
+# Attention Users ⚠️
+
+This mod is being replaced by [Theater](https://github.com/BeatSaberTheater/BeatSaberTheater)! If you want compatibility with the latest BeatSaber version, please switch over. Theater is a drop-in replacement, it will automatically detect your existing videos and play them exactly the same. You will need to delete Cinema from your Plugins folder before you install Theater. New features are also being actively developed. Grab the latest release [here](https://github.com/BeatSaberTheater/BeatSaberTheater/releases/latest).
+
 # BeatSaberCinema
 
 A Beat Saber plugin that allows you to sync up videos to play in the background of your maps, heavily inspired by MusicVideoPlayer. This plugin is currently only available for the PC version, there is no Quest release.
